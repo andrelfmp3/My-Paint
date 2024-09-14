@@ -33,16 +33,54 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
-        painelDesenho = new meupaint.PainelDesenho();
         painelBotoes = new javax.swing.JPanel();
         btnLinha = new javax.swing.JToggleButton();
         btnRetangulo = new javax.swing.JToggleButton();
         btnElipse = new javax.swing.JToggleButton();
+        btnPoligono = new javax.swing.JToggleButton();
         btnCor1 = new javax.swing.JButton();
         btnCor2 = new javax.swing.JButton();
+        ladosPoligono = new javax.swing.JComboBox<>();
+        painelDesenho = new meupaint.PainelDesenho();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Meu Paint");
+
+        buttonGroup.add(btnLinha);
+        btnLinha.setSelected(true);
+        btnLinha.setText("Linha");
+
+        buttonGroup.add(btnRetangulo);
+        btnRetangulo.setText("Retângulo");
+
+        buttonGroup.add(btnElipse);
+        btnElipse.setText("Elipse");
+
+        buttonGroup.add(btnPoligono);
+        btnPoligono.setText("Poligono");
+        btnPoligono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoligonoActionPerformed(evt);
+            }
+        });
+
+        btnCor1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCor1.setText("Cor 1");
+        btnCor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCor1ActionPerformed(evt);
+            }
+        });
+
+        btnCor2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCor2.setText("Cor 2");
+        btnCor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCor2ActionPerformed(evt);
+            }
+        });
+
+        ladosPoligono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         painelDesenho.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -62,38 +100,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         painelDesenho.setLayout(painelDesenhoLayout);
         painelDesenhoLayout.setHorizontalGroup(
             painelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         painelDesenhoLayout.setVerticalGroup(
             painelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 259, Short.MAX_VALUE)
         );
-
-        buttonGroup.add(btnLinha);
-        btnLinha.setSelected(true);
-        btnLinha.setText("Linha");
-
-        buttonGroup.add(btnRetangulo);
-        btnRetangulo.setText("Retângulo");
-
-        buttonGroup.add(btnElipse);
-        btnElipse.setText("Elipse");
-
-        btnCor1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCor1.setText("Cor 1");
-        btnCor1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCor1ActionPerformed(evt);
-            }
-        });
-
-        btnCor2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCor2.setText("Cor 2");
-        btnCor2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCor2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout painelBotoesLayout = new javax.swing.GroupLayout(painelBotoes);
         painelBotoes.setLayout(painelBotoesLayout);
@@ -101,43 +113,53 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBotoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnLinha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRetangulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnElipse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCor1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCor2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBotoesLayout.createSequentialGroup()
+                        .addComponent(btnLinha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRetangulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnElipse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPoligono)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnCor1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCor2)
+                        .addGap(18, 18, 18)
+                        .addComponent(ladosPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painelDesenho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         painelBotoesLayout.setVerticalGroup(
             painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBotoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLinha)
-                    .addComponent(btnRetangulo)
-                    .addComponent(btnElipse)
-                    .addComponent(btnCor1)
-                    .addComponent(btnCor2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnRetangulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLinha)
+                        .addComponent(btnElipse)
+                        .addComponent(btnCor1)
+                        .addComponent(btnCor2)
+                        .addComponent(btnPoligono)
+                        .addComponent(ladosPoligono)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelDesenho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDesenho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(painelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelDesenho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,8 +179,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             novaForma = new Linha( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground() );
         } else if ( btnRetangulo.isSelected() ) {
             novaForma = new Retangulo( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-        } else {
+        } else if ( btnElipse.isSelected() ){
             novaForma = new Elipse( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
+        } else { // adiciona poligono
+            novaForma = new Poligono( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
         }
         
         painelDesenho.adicionarForma( novaForma );
@@ -175,8 +199,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             formaTemp = new Linha( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground() );
         } else if ( btnRetangulo.isSelected() ) {
             formaTemp = new Retangulo( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-        } else {
+        } else if ( btnElipse.isSelected() ) {
             formaTemp = new Elipse( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
+        } else { // adiciona poligono
+            formaTemp = new Poligono( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
         }
         
         painelDesenho.setFormaTemporaria( formaTemp );
@@ -206,6 +232,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCor2ActionPerformed
 
+    
+    private void btnPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoligonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPoligonoActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -246,8 +278,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCor2;
     private javax.swing.JToggleButton btnElipse;
     private javax.swing.JToggleButton btnLinha;
+    private javax.swing.JToggleButton btnPoligono;
     private javax.swing.JToggleButton btnRetangulo;
     private javax.swing.ButtonGroup buttonGroup;
+    private javax.swing.JComboBox<String> ladosPoligono;
     private javax.swing.JPanel painelBotoes;
     private meupaint.PainelDesenho painelDesenho;
     // End of variables declaration//GEN-END:variables

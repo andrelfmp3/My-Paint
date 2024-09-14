@@ -11,9 +11,9 @@ import java.awt.Graphics;
  *
  * @author bv110309
  */
-public class Retangulo extends Forma { 
+public class Poligono extends Forma { // faz retangulo. adaptar botoes
 
-    public Retangulo(int xIni, int yIni, int xFim, int yFim, Color corContorno, Color corPreenchimento) {
+    public Poligono(int xIni, int yIni, int xFim, int yFim, Color corContorno, Color corPreenchimento) {
         super( xIni, yIni, xFim, yFim, corContorno, corPreenchimento );
     }
     
