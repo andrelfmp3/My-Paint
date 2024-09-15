@@ -15,6 +15,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private int xPress;
     private int yPress;
+    private static int numeroDeLados = 3; // adicionado para acessar de outra classe
     
     /**
      * Creates new form JanelaPrincipal
@@ -80,7 +81,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        ladosPoligono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ladosPoligono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "03 Lados", "04 Lados", "05 Lados", "06 Lados", "07 Lados", "08 Lados", "09 Lados", "10 Lados", "11 Lados", "12 Lados", "13 Lados", "14 Lados", "15 Lados", "16 Lados", "17 Lados", "18 Lados", "19 Lados", "20 Lados" }));
+        ladosPoligono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ladosPoligonoActionPerformed(evt);
+            }
+        });
 
         painelDesenho.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -194,6 +200,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void painelDesenhoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelDesenhoMouseDragged
         
         Forma formaTemp = null;
+        int lados = getNumeroDeLados(); // atualiza?
         
         if ( btnLinha.isSelected() ) {
             formaTemp = new Linha( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground() );
@@ -201,9 +208,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             formaTemp = new Retangulo( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
         } else if ( btnElipse.isSelected() ) {
             formaTemp = new Elipse( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-        } else { // adiciona poligono
+         } else if ( btnPoligono.isSelected() ) { // adiciona poligono
             formaTemp = new Poligono( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
         }
+        
         
         painelDesenho.setFormaTemporaria( formaTemp );
         painelDesenho.repaint();
@@ -236,7 +244,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void btnPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoligonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPoligonoActionPerformed
+
+    private void ladosPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ladosPoligonoActionPerformed
+        String itemSelecionado = (String) ladosPoligono.getSelectedItem();
+        // Extrai apenas o número de lados
+        numeroDeLados = Integer.parseInt(itemSelecionado.split(" ")[0]);
+        System.out.printf("Número de lados atualizado: %d%n", numeroDeLados);
+    }//GEN-LAST:event_ladosPoligonoActionPerformed
     
+    public static int getNumeroDeLados() {
+        return numeroDeLados;
+    }
     
     /**
      * @param args the command line arguments

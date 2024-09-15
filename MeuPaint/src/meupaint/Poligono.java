@@ -12,7 +12,7 @@ import java.awt.Graphics;
  * @author bv110309
  */
 public class Poligono extends Forma { // faz retangulo. adaptar botoes
-
+    
     public Poligono(int xIni, int yIni, int xFim, int yFim, Color corContorno, Color corPreenchimento) {
         super( xIni, yIni, xFim, yFim, corContorno, corPreenchimento );
     }
@@ -20,11 +20,15 @@ public class Poligono extends Forma { // faz retangulo. adaptar botoes
     @Override
     public void desenhar( Graphics g ) {
         
+        int numeroDeLados = JanelaPrincipal.getNumeroDeLados();
+        
         int xIniD = xIni < xFim ? xIni : xFim;
         int xFimD = xIni < xFim ? xFim : xIni;
         
         int yIniD = yIni < yFim ? yIni : yFim;
         int yFimD = yIni < yFim ? yFim : yIni;
+        
+        System.out.printf("%d", numeroDeLados); // Teste de saída no terminal
         
         g.setColor( corPreenchimento );
         g.fillRect( xIniD, yIniD, xFimD - xIniD, yFimD - yIniD );

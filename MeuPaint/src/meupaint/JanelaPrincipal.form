@@ -153,16 +153,15 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="ladosPoligono">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;03 Lados&quot;, &quot;04 Lados&quot;, &quot;05 Lados&quot;, &quot;06 Lados&quot;, &quot;07 Lados&quot;, &quot;08 Lados&quot;, &quot;09 Lados&quot;, &quot;10 Lados&quot;, &quot;11 Lados&quot;, &quot;12 Lados&quot;, &quot;13 Lados&quot;, &quot;14 Lados&quot;, &quot;15 Lados&quot;, &quot;16 Lados&quot;, &quot;17 Lados&quot;, &quot;18 Lados&quot;, &quot;19 Lados&quot;, &quot;20 Lados&quot; })" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ladosPoligonoActionPerformed"/>
+          </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
