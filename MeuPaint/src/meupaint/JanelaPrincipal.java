@@ -202,19 +202,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         Forma formaTemp = null;
         int lados = getNumeroDeLados(); // atualiza?
         
-        if ( btnLinha.isSelected() ) {
-            formaTemp = new Linha( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground() );
-        } else if ( btnRetangulo.isSelected() ) {
-            formaTemp = new Retangulo( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-        } else if ( btnElipse.isSelected() ) {
-            formaTemp = new Elipse( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-         } else if ( btnPoligono.isSelected() ) { // adiciona poligono
-            formaTemp = new Poligono( xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground() );
-        }
-        
-        
-        painelDesenho.setFormaTemporaria( formaTemp );
-        painelDesenho.repaint();
+        if (btnLinha.isSelected()) {
+    formaTemp = new Linha(xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground());
+    } else if (btnRetangulo.isSelected()) {
+    formaTemp = new Retangulo(xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground());
+    } else if (btnElipse.isSelected()) {
+    formaTemp = new Elipse(xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground());
+    } else if (btnPoligono.isSelected()) {
+    formaTemp = new Poligono(xPress, yPress, evt.getX(), evt.getY(), btnCor1.getForeground(), btnCor2.getForeground());
+    } else {
+    
+}
+
+// Define a forma temporária para o painel de desenho e solicita uma atualização
+painelDesenho.setFormaTemporaria(formaTemp);
+painelDesenho.repaint();
+
         
     }//GEN-LAST:event_painelDesenhoMouseDragged
 
@@ -249,7 +252,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         String itemSelecionado = (String) ladosPoligono.getSelectedItem();
         // Extrai apenas o número de lados
         numeroDeLados = Integer.parseInt(itemSelecionado.split(" ")[0]);
-        System.out.printf("Número de lados atualizado: %d%n", numeroDeLados);
+        
     }//GEN-LAST:event_ladosPoligonoActionPerformed
     
     public static int getNumeroDeLados() {
@@ -284,10 +287,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JanelaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new JanelaPrincipal().setVisible(true);
         });
     }
 

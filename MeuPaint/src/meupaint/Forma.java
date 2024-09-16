@@ -19,7 +19,7 @@ public abstract class Forma {
     protected int yFim;
     protected Color corContorno;
     protected Color corPreenchimento;
-
+    
     public Forma(int xIni, int yIni, int xFim, int yFim, Color corContorno, Color corPreenchimento) {
         this.xIni = xIni;
         this.yIni = yIni;
@@ -63,4 +63,5 @@ public abstract class Forma {
         this.yFim = yFim;
     }
     
-}
+    
+}  
