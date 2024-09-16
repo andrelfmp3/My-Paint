@@ -35,6 +35,8 @@ public class Poligono extends Forma { // faz retangulo. adaptar botoes
         
         g.setColor( corContorno );
         g.drawRect( xIniD, yIniD, xFimD - xIniD, yFimD - yIniD );
+        //testeeee
+       
         
     }
     
